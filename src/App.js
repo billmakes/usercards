@@ -1,63 +1,63 @@
-import React, { Component } from 'react'
-import ReactSiema from 'react-siema'
-import './App.css'
+import React, { Component } from "react";
+import ReactSiema from "react-siema";
+import "./App.css";
 
-const USER_AMOUNT=`10`
-const API=`https://randomuser.me/api/?results=${USER_AMOUNT}`
+const USER_AMOUNT = `10`;
+const API = `https://randomuser.me/api/?results=${USER_AMOUNT}`;
 
 const options = {
   duration: 500,
   loop: true,
-  easing: 'ease-out',
+  easing: "ease-out",
   perPage: 1
-}
+};
 
-class SimpleSlider extends React.Component {
+class UserList extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.slider = null;
   }
   render() {
     return (
       <div>
-      <ReactSiema {...options} ref={siema => this.slider = siema}>
-      {this.props.userData.map((user) => {
-        return (
-          <div key={user.name.first}>
-            <span><img src={user.picture.medium} alt={`${user.name.first}`} /></span>
-            <h2>{user.name.first}</h2>
-            <p>{user.email}</p>
-          </div>
-        )
-      })}
-
-      </ReactSiema>
-
-      <button onClick={() => this.slider.prev()}>prev</button>
-      <button onClick={() => this.slider.next()}>next</button>
+        <ReactSiema {...options} ref={siema => (this.slider = siema)}>
+          {this.props.userData.map(user => {
+            return (
+              <div key={user.name.first}>
+                <span>
+                  <img src={user.picture.medium} alt={`${user.name.first}`} />
+                </span>
+                <h2>{user.name.first}</h2>
+                <p>{user.email}</p>
+              </div>
+            );
+          })}
+        </ReactSiema>
+        <button onClick={() => this.slider.prev()}>prev</button>
+        <button onClick={() => this.slider.next()}>next</button>
       </div>
     );
   }
 }
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       users: []
-    }
+    };
   }
 
   componentDidMount() {
     fetch(API)
       .then(response => response.json())
-      .then(data => this.setState({ users: data.results }))
+      .then(data => this.setState({ users: data.results }));
   }
 
   render() {
     return (
       <div>
-        <SimpleSlider userData={this.state.users}/>
+        <UserList userData={this.state.users} />
       </div>
     );
   }

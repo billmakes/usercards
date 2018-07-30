@@ -1,46 +1,12 @@
 import React, { Component } from "react";
-import ReactSiema from "react-siema";
+
+import UserList from './UserList'
 import { Flex, Box } from 'grid-styled'
 import "./App.css";
 
 const USER_AMOUNT = `10`;
 const API = `https://randomuser.me/api/?results=${USER_AMOUNT}`;
 
-const options = {
-  duration: 500,
-  loop: true,
-  easing: "ease-out",
-  perPage: 1
-};
-
-class UserList extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.slider = null;
-  }
-  render() {
-    return (
-      <div>
-        <ReactSiema {...options} ref={siema => (this.slider = siema)}>
-          {this.props.userData.map(user => {
-            return (
-              <div key={user.name.first}  className='card'>
-                <span>
-                  <img src={user.picture.medium} alt={`${user.name.first}`} />
-                </span>
-                <h2>{user.name.first}</h2>
-                <p>{user.email}</p>
-              </div>
-            );
-          })}
-        </ReactSiema>
-        <button onClick={() => this.slider.prev()}><span role="img" aria-label="left">⬅️</span></button>
-        <button onClick={() => this.slider.next()}><span role="img" aria-label="right">➡️</span></button>
-      </div>
-    );
-  }
-}
 class App extends Component {
   constructor(props) {
     super(props);
@@ -59,12 +25,13 @@ class App extends Component {
     return (
       <div>
         <Flex>
-          <Box width={1/3} px={4}>
+          <Box width={1/4} px={3}>
           </Box>
-          <Box width={1/3} px={4}>
+          <Box width={2/4} px={2}>
             <UserList userData={this.state.users} />
+            {console.log(this.state.users)}
           </Box>
-          <Box width={1/3} px={4}>
+          <Box width={1/4} px={3}>
           </Box>
         </Flex>
       </div>

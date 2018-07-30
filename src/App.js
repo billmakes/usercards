@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactSiema from "react-siema";
+import { Flex, Box } from 'grid-styled'
 import "./App.css";
 
 const USER_AMOUNT = `10`;
@@ -24,7 +25,7 @@ class UserList extends React.Component {
         <ReactSiema {...options} ref={siema => (this.slider = siema)}>
           {this.props.userData.map(user => {
             return (
-              <div key={user.name.first}>
+              <div key={user.name.first}  className='card'>
                 <span>
                   <img src={user.picture.medium} alt={`${user.name.first}`} />
                 </span>
@@ -34,8 +35,8 @@ class UserList extends React.Component {
             );
           })}
         </ReactSiema>
-        <button onClick={() => this.slider.prev()}>prev</button>
-        <button onClick={() => this.slider.next()}>next</button>
+        <button onClick={() => this.slider.prev()}><span role="img" aria-label="left">⬅️</span></button>
+        <button onClick={() => this.slider.next()}><span role="img" aria-label="right">➡️</span></button>
       </div>
     );
   }
@@ -57,7 +58,15 @@ class App extends Component {
   render() {
     return (
       <div>
-        <UserList userData={this.state.users} />
+        <Flex>
+          <Box width={1/3} px={4}>
+          </Box>
+          <Box width={1/3} px={4}>
+            <UserList userData={this.state.users} />
+          </Box>
+          <Box width={1/3} px={4}>
+          </Box>
+        </Flex>
       </div>
     );
   }

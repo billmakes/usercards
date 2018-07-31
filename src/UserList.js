@@ -5,15 +5,15 @@ const options = {
     duration: 500,
     loop: true,
     easing: "ease-out",
-    perPage: 1
+    perPage: 2
   };
   
   class UserList extends Component {
     constructor(props) {
       super(props);
-  
       this.slider = null;
     }
+
     render() {
       return (
         <div>
@@ -27,6 +27,8 @@ const options = {
                   </div>
                   <h2 className='cardtitle'>{user.name.first} {user.name.last}</h2>
                   <p>{user.email}</p>
+                  <button>More Info</button>
+                  <button onClick={() => this.props.onRemove(user.name.first)}>Remove User</button>
                 </div>
               );
             })}

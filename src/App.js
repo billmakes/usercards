@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-
 import UserList from './UserList'
-import { Flex, Box } from 'grid-styled'
+
 import "./App.css";
 
 const USER_AMOUNT = `2`;
@@ -39,17 +38,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Flex>
-          <Box width={1/4} px={3}>
-          </Box>
-          <Box width={2/4} px={2}>
-            <UserList userData={this.state.users} onRemove={this.handleRemoveUser} />
-            {console.log(this.state.users)}
-          </Box>
-          <Box width={1/4} px={3}>
-          </Box>
+          <UserList userData={this.state.users} onRemove={this.handleRemoveUser} />
+          {console.log(this.state.users)}
           <button onClick={this.addRandomUser}>Add User</button>
-        </Flex>
       </div>
     );
   }

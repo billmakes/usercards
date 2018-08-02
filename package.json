@@ -3,12 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "grid-styled": "^5.0.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-modal": "^3.5.1",
     "react-scripts": "^1.1.4",
-    "react-siema": "^1.0.1",
-    "styled-components": "^3.3.3"
+    "react-siema": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
